@@ -8,6 +8,7 @@
       <div class="floating-ball" v-for="ball in floatingBalls" :key="ball.left" :style="{ animationDelay: `${ball.delay}s`, left: `${ball.left}%`, animationDuration:`${ball.speed}s`, height: `${ball.size}em`, width: `${ball.size}em`, zIndex: ball.size * 10}">
       </div>
     </div>
+    <div class="info-ball" v-for="ball in infoBalls" :key="ball.left" :style="{ animationDelay: `${ball.delay}s`, left: `${ball.left}%`, animationDuration:`${ball.speed}s`}"><p style="margin-top: 1.5em;">{{ball.content}}</p></div>
   </div>
 </template>
 
@@ -32,6 +33,44 @@ export default {
         { left: 75, delay: 6, speed:5, size: 1},
         { left: 97, delay: 7, speed:13, size: 1.5},
         { left: 56, delay: 6, speed:22, size: 1},
+      ], 
+      infoBalls: [
+        {
+          left: 13,
+          delay: 1,
+          speed: 25,
+          content: "Projects"
+        },
+        {
+          left: 50,
+          delay: 4,
+          speed: 27,
+          content: 'Samples'
+        },
+        {
+          left: 68,
+          delay: 8,
+          speed: 23,
+          content: 'Articles'
+        },
+        {
+          left: 40,
+          delay: 30,
+          speed: 32,
+          content: "But Not Yet"
+        },
+        {
+          left: 32,
+          delay: 60,
+          speed: 55,
+          content: "Bye Now",
+        }, 
+        {
+          left: 20,
+          delay: 120,
+          speed: 60,
+          content: "Get Out"
+        }
       ]
     }
   }
@@ -78,10 +117,23 @@ export default {
     position: absolute;
     top: 100%;
     animation: float-up;
-    border: 1px black solid;
+    border: 2px purple solid;
     border-radius: 50%;
     animation-iteration-count: infinite;
     background: #FFFFFF; 
+  }
+
+  .info-ball {
+    position: absolute;
+    top: 100%;
+    animation: float-up;
+    border: 2px purple solid;
+    border-radius: 50%;
+    animation-iteration-count: infinite;
+    background: #FFFFFF; 
+    height: 5em;
+    width: 5em;
+    z-index: 24
   }
 
   @keyframes float-up {
