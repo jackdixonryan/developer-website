@@ -5,7 +5,7 @@
       <p>Development Site for Jack Ryan. Soon, projects, skills, and more will be displayed on this page. Stay tuned!</p>
     </div>
     <div id="floating-balls">
-      <div class="floating-ball" v-for="ball in floatingBalls" :key="ball.left" :style="{ animationDelay: `${ball.delay}s`, left: `${ball.left}%`, animationDuration:`${ball.speed}s`, height: `${ball.size}em`, width: `${ball.size}em`}">
+      <div class="floating-ball" v-for="ball in floatingBalls" :key="ball.left" :style="{ animationDelay: `${ball.delay}s`, left: `${ball.left}%`, animationDuration:`${ball.speed}s`, height: `${ball.size}em`, width: `${ball.size}em`, zIndex: ball.size * 10}">
       </div>
     </div>
   </div>
@@ -39,6 +39,9 @@ export default {
 </script>
 
 <style scoped>
+  html {
+    height: 100vh;
+  }
 
   h1, p {
     font-family: "IBM Plex Sans", sans-serif;
@@ -66,7 +69,9 @@ export default {
     border: 2px purple solid;
     position: relative;
     top: 25%;
-    z-index: 15;
+    z-index: 25;
+    animation-name: content-float-up;
+    animation-duration: 10s;
   }
 
   .floating-ball {
@@ -77,8 +82,6 @@ export default {
     border-radius: 50%;
     animation-iteration-count: infinite;
     background: #FFFFFF; 
-    background: -webkit-radial-gradient(#EAEAEA, #DBDBDB, #F2F2F2, #ADA996);  
-    background: radial-gradient(#EAEAEA, #DBDBDB, #F2F2F2, #ADA996); 
   }
 
   @keyframes float-up {
@@ -87,6 +90,15 @@ export default {
     }
     100% {
       top: -25%;
+    }
+  }
+
+  @keyframes content-float-up {
+    0% {
+      top: 100%;
+    }
+    100% {
+      top: 25%;
     }
   }
 

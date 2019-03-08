@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div id="main">
     <router-view />
   </div>
 </template>
@@ -14,5 +14,9 @@ export default {
   html, body {
     margin: 0px;
     padding: 0px;
+  }
+
+  #main {
+    height: 100vh !important;
   }
 </style>
