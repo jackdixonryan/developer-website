@@ -5,10 +5,34 @@
       <p>Development Site for Jack Ryan. Soon, projects, skills, and more will be displayed on this page. Stay tuned!</p>
     </div>
     <div id="floating-balls">
-      <div class="floating-ball" v-for="ball in floatingBalls" :key="ball.left" :style="{ animationDelay: `${ball.delay}s`, left: `${ball.left}%`, animationDuration:`${ball.speed}s`, height: `${ball.size}em`, width: `${ball.size}em`, zIndex: ball.size * 10}">
+      <div 
+        class="floating-ball" 
+        v-for="ball in floatingBalls" 
+        :key="ball.left" 
+        :style="{ 
+          animationDelay: `${ball.delay}s`,
+          left: `${ball.left}%`, 
+          animationDuration:`${ball.speed}s`, 
+          height: `${ball.size}em`, 
+          width: `${ball.size}em`, 
+          zIndex: ball.size * 10, 
+          opacity: ball.opacity
+        }"
+      >
       </div>
     </div>
-    <div class="info-ball" v-for="ball in infoBalls" :key="ball.left" :style="{ animationDelay: `${ball.delay}s`, left: `${ball.left}%`, animationDuration:`${ball.speed}s`}"><p style="margin-top: 1.5em;">{{ball.content}}</p></div>
+    <div 
+      class="info-ball" 
+      v-for="ball in infoBalls" 
+      :key="ball.left" 
+      :style="{ 
+        animationDelay: `${ball.delay}s`,
+        left: `${ball.left}%`, 
+        animationDuration:`${ball.speed}s`
+      }"
+    >
+      <p style="margin-top: 1.5em;">{{ball.content}}</p>
+    </div>
   </div>
 </template>
 
@@ -17,22 +41,22 @@ export default {
   data() {
     return {
       floatingBalls: [
-        { left: 10, delay: 0, speed:9, size: 1},
-        { left: 35, delay: 1, speed:19, size: 1},
-        { left: 60, delay: 0, speed:13, size: 1.5},
-        { left: 85, delay: 1, speed:8, size: 2},
-        { left: 13, delay: 2, speed:15, size: 1},
-        { left: 40, delay: 3, speed:10, size: 1.5},
-        { left: 66, delay: 2, speed:21, size: 1.5},
-        { left: 92, delay: 4, speed:12, size: 1},
-        { left: 38, delay: 2, speed:16, size: 1.3},
-        { left: 50, delay: 3, speed:17, size: 1},
-        { left: 13, delay: 5, speed:11, size: 2},
-        { left: 31, delay: 7, speed:10, size: 1},
-        { left: 46, delay: 5, speed:23, size: 1.5},
-        { left: 75, delay: 6, speed:5, size: 1},
-        { left: 97, delay: 7, speed:13, size: 1.5},
-        { left: 56, delay: 6, speed:22, size: 1},
+        { left: 10, delay: 0, speed:9, size: 1, opacity: .6},
+        { left: 35, delay: 1, speed:19, size: 1, opacity: .6},
+        { left: 60, delay: 0, speed:13, size: 1.5, opacity: .7},
+        { left: 85, delay: 1, speed:8, size: 2, opacity: .8},
+        { left: 13, delay: 2, speed:15, size: 1, opacity: .6},
+        { left: 40, delay: 3, speed:10, size: 1.5, opacity: .6},
+        { left: 66, delay: 2, speed:21, size: 1.5, opacity: .7},
+        { left: 92, delay: 4, speed:12, size: 1, opacity: .6},
+        { left: 38, delay: 2, speed:16, size: 1.3, opacity: .7},
+        { left: 50, delay: 3, speed:17, size: 1, opacity: .6},
+        { left: 13, delay: 5, speed:11, size: 2, opacity: .8},
+        { left: 31, delay: 7, speed:10, size: 1, opacity: .6},
+        { left: 46, delay: 5, speed:23, size: 1.5, opacity: .7},
+        { left: 75, delay: 6, speed:5, size: 1, opacity: .6},
+        { left: 97, delay: 7, speed:13, size: 1.5, opacity: .7},
+        { left: 56, delay: 6, speed:22, size: 1, opacity: .6},
       ], 
       infoBalls: [
         {
@@ -133,7 +157,8 @@ export default {
     background: #FFFFFF; 
     height: 5em;
     width: 5em;
-    z-index: 24
+    z-index: 24;
+    opacity: .9;
   }
 
   @keyframes float-up {
