@@ -1,4 +1,8 @@
 import Vue from "vue";
+
+import VueHead from 'vue-head';
+Vue.use(VueHead);
+
 import App from "./App.vue";
 import router from './router';
 

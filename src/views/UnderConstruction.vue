@@ -38,6 +38,14 @@
 
 <script>
 export default {
+  name: 'under-construction',
+  head: {
+    title: {
+      inner: 'Under Construction',
+      separator: '|',
+      complement: 'Jack Ryan Development'
+    }
+  },
   data() {
     return {
       floatingBalls: [
