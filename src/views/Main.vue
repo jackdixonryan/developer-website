@@ -1,21 +1,7 @@
 <template>
   <div>
-    <button 
-      id="arrow-up"
-      @click="active='main-blurb'"
-    >^</button>
-    <button 
-      id="arrow-right"
-      @click="active='main-contact'"
-    >></button>
-    <button 
-      id="arrow-down"
-      @click="active='main-projects'"
-    >v</button>
-    <button 
-      id="arrow-left"
-      @click="active='main-writings'"
-    >this way</button>
+    <p v-if="active===null">Follow the arrows.</p>
+    <arrow-navigation :arrowValues="arrowValues" @redirect="catchRedirect($event)" />
     <main-blurb 
       v-if="active==='main-blurb'"
       class="main-component"
@@ -40,20 +26,39 @@ import MainBlurb from '../components/MainBlurb.vue';
 import MainContact from '../components/MainContact.vue';
 import MainProjects from '../components/MainProjects.vue';
 import MainWritings from '../components/MainWritings.vue';
+import ArrowNavigation from '../components/ArrowNavigation.vue'
 
 export default {
   components: {
     MainBlurb, 
     MainContact, 
     MainProjects, 
-    MainWritings
+    MainWritings,
+    ArrowNavigation
   },
   data() {
     return {
       active: null,
     }
   },
+  computed: {
+    arrowValues() {
+      return this.$store.state.arrowValues;
+    }
+  },
   methods: {
+    // catches the switch to a different part of the site for simple navigation.
+    emitPageChange() {
+      // pretty straightforward. If the page has been visited, it's added to the list. If not, it's not added.
+      if (!this.$store.state.pagesVisited.includes(this.active)) {
+        this.$store.state.pagesVisited.push(this.active);
+      }
+    },
+    // resets the active component to the emitted arrow value thus running the transition, and emits the page change to the vuex store.
+    catchRedirect(e) {
+      this.active = e;
+      this.emitPageChange();
+    }
   }
 }
 </script>
@@ -89,6 +94,7 @@ export default {
     border: none;
     color: purple;
     font-size: 1.4em;
+    z-index: 100;
   }
 
   .main-component {
