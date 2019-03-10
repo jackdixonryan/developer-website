@@ -10,6 +10,10 @@ const router = new VueRouter({
   mode: 'history',
   routes: [
     {
+      path: '/main',
+      component: Main,
+    },
+    {
       path: '*',
       component: UnderContruction,
     }

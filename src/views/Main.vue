@@ -15,7 +15,7 @@
     <button 
       id="arrow-left"
       @click="active='main-writings'"
-    ><</button>
+    >this way</button>
     <main-blurb 
       v-if="active==='main-blurb'"
       class="main-component"
@@ -93,9 +93,8 @@ export default {
 
   .main-component {
     position: absolute;
-    top: 40%;
-    left: 50%;
-    border: 1px purple solid;
+    height: 100vh;
+    width: 100%;
     padding: 1em;
   }
 
